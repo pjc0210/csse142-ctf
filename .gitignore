@@ -1,0 +1,4 @@
+venv/
+__pycache__/
+*.pyc
+# users.db #let's keep the database the same for everyone
