@@ -1,4 +1,5 @@
 console.log("External JS loaded");
+
 function handleSubmit(form) {
     const vulnIndex = sessionStorage.getItem("vulnIndex");
     const actionWithVuln = form.action + '?vuln=' + vulnIndex;

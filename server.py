@@ -26,7 +26,7 @@ User {{ "%03d" % loop.index }}: {{ "%-10s" % user }} | Password: <input type="pa
 {% endfor %}
     </pre>
 
-<script src="main.js"></script>
+<script src="/static/main.js"></script>
 </body>
 </html>
 """
