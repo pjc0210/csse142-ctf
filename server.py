@@ -26,40 +26,7 @@ User {{ "%03d" % loop.index }}: {{ "%-10s" % user }} | Password: <input type="pa
 {% endfor %}
     </pre>
 
-<script>
-function handleSubmit(form) {
-    const vulnIndex = sessionStorage.getItem("vulnIndex");
-    const actionWithVuln = form.action + '?vuln=' + vulnIndex;
-
-    fetch(actionWithVuln, {
-        method: 'POST',
-        body: new FormData(form)
-    })
-    .then(res => res.text())
-    .then(html => {
-        const match = html.match(/alert\(['"](.*?)['"]\)/);
-        if (match) {
-            alert(match[1]);
-        }
-    });
-
-    return false; // prevent full page reload
-}
-
-// Pick vulnerable index ONCE per tab session
-const userCount = {{ users|length }};
-if (!sessionStorage.getItem("vulnIndex")) {
-    const randomIndex = Math.floor(Math.random() * userCount) + 1;
-    sessionStorage.setItem("vulnIndex", randomIndex);
-}
-
-// Inject DOM comment into vulnerable form
-document.querySelectorAll("form").forEach((form, idx) => {
-    if ((idx + 1) === parseInt(sessionStorage.getItem("vulnIndex"))) {
-        form.appendChild(document.createComment(" TO DO: fix this "));
-    }
-});
-</script>
+<script src="main.js"></script>
 </body>
 </html>
 """
@@ -91,7 +58,7 @@ def login(index):
     cur = conn.cursor()
 
     if index == vuln_index:
-        # ❗ Vulnerable raw SQL query
+        # Vulnerable raw SQL query
         query = f"SELECT * FROM users WHERE username = '{username}' AND password = '{password}'"
         print(f"[VULNERABLE SQL] {query}")
         try:
@@ -100,14 +67,14 @@ def login(index):
             conn.close()
             return f"<script>alert('SQL error: {e}');</script>"
     else:
-        # ✅ Safe parameterized query
+        # Safe parameterized query
         cur.execute("SELECT * FROM users WHERE username = ? AND password = ?", (username, password))
 
     result = cur.fetchone()
     conn.close()
 
     if result:
-        return "<script>alert('FLAG{c4n_y0u_bypass_me}');</script>"
+        return "<script>alert('FLAG{c4n_y0u_byp4ss_m3}');</script>"
     else:
         return "<script>alert('Incorrect password!');</script>"
 
