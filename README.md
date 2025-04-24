@@ -30,7 +30,7 @@ This returns a number like "237", which tells you which form is vulnerable to SQ
 
 ---
 
-## 3: Locate That Form
+## Step 3: Locate That Form
 
 On the page, scroll down to the corresponding form:
 User 237: <username> | Password: [___________] [Login]
