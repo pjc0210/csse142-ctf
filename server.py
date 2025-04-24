@@ -74,7 +74,7 @@ def login(index):
     conn.close()
 
     if result:
-        return "<script>alert('FLAG{c4n_y0u_byp4ss_m3}');</script>"
+        return "<script>alert('pracsec{c4n_y0u_byp4ss_m3}');</script>"
     else:
         return "<script>alert('Incorrect password!');</script>"
 
