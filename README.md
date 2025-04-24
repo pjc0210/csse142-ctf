@@ -23,9 +23,9 @@ Then go to the **Console** tab.
 
 In the console, run:
 
-```js
+```
 sessionStorage.getItem("vulnIndex")
-'''
+```
 This returns a number like "237", which tells you which form is vulnerable to SQL injection.
 
 ---
