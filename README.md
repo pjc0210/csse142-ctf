@@ -42,11 +42,9 @@ This is the one you want to target.
 ## Step 4: Inject Payload
 
 In the password box for that form, enter the classic SQL injection:
+```
 ' OR '1'='1
-
-sql
-Copy
-Edit
+```
 
 Then click the **Login** button.
 
